@@ -2,28 +2,6 @@
 # yarn lockfile v1
 
 
-"@ariakit/core@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@ariakit/core/-/core-0.1.0.tgz#efff4b85af7f4809db6f304fbe64d27bb93eb393"
-  integrity sha512-t4mgj1Uu+vMSe8+MbHGbxgGpRmrQiCKCy1dbzenF6cvjbmEr7BAQU2ZkwQeoTILKjIPHOJUxvPr9NnES1uI2rg==
-
-"@ariakit/react-core@0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@ariakit/react-core/-/react-core-0.1.1.tgz#515678a24d6162555a6a12ca1fff639b68ffc6e5"
-  integrity sha512-Ej0friqO6bF6SA1Vm2MLzaPujVWPomsAzId0b00D6mc6i6aub0EAL4XSlwymiypTRG839wIIfsn4dSDYMn+iFQ==
-  dependencies:
-    "@ariakit/core" "0.1.0"
-    use-sync-external-store "^1.2.0"
-
-"@ariakit/react@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@ariakit/react/-/react-0.1.1.tgz#aa0d70f3c7092c1e3abcd8ede864b1521d58312a"
-  integrity sha512-AZy9cHnOeUQR2Kk01TIzGpQtF7uSTAC/m0gSAUiqncS8FK3RvJ1mp238ENtd1+/RXvpkZTPNHkv0zlt/7Xnv3Q==
-  dependencies:
-    "@ariakit/core" "0.1.0"
-    "@ariakit/react-core" "0.1.1"
-    "@floating-ui/dom" "^1.0.0"
-
 "@babel/code-frame@^7.0.0":
   version "7.21.4"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.21.4.tgz#d0fa9e4413aca81f2b23b9442797bda1826edb39"
@@ -289,18 +267,6 @@
   version "0.17.16"
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.17.16.tgz#260f19b0a3300d22c3a3f52722c671dc561edaa3"
   integrity sha512-xJ7OH/nanouJO9pf03YsL9NAFQBHd8AqfrQd7Pf5laGyyTt/gToul6QYOA/i5i/q8y9iaM5DQFNTgpi995VkOg==
-
-"@floating-ui/core@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.2.6.tgz#d21ace437cc919cdd8f1640302fa8851e65e75c0"
-  integrity sha512-EvYTiXet5XqweYGClEmpu3BoxmsQ4hkj3QaYA6qEnigCWffTP3vNRwBReTdrwDwo7OoJ3wM8Uoe9Uk4n+d4hfg==
-
-"@floating-ui/dom@^1.0.0":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.2.6.tgz#bcf0c7bada97c20d9d1255b889f35bac838c63fe"
-  integrity sha512-02vxFDuvuVPs22iJICacezYJyf7zwwOCWkPNkWNBr1U0Qt1cKFYzWvxts0AmqcOQGwt/3KJWcWIgtbUU38keyw==
-  dependencies:
-    "@floating-ui/core" "^1.2.6"
 
 "@mui/base@5.0.0-alpha.125":
   version "5.0.0-alpha.125"
@@ -872,11 +838,6 @@ typescript@^4.9.3:
   version "4.9.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
-
-use-sync-external-store@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
-  integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
 
 vite@^4.2.0:
   version "4.2.1"
