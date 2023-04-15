@@ -1,15 +1,25 @@
-import { Card, CardActions, CardContent, Button, Typography, Rating } from "@mui/material";
+import { Card, CardActions, CardContent, Button, Typography, Rating, CardMedia, Box } from "@mui/material";
 import BookIcon from '@mui/icons-material/Book';
 import { IBook } from "../../types/IBook";
 
 export default function BookCard({
     title,
     author,
-    rating
+    rating,
+    photoUrl
 }: IBook) {
+    console.log(photoUrl)
     return (
         <Card>
-            <BookIcon fontSize="large" />
+            {
+                photoUrl !== null && <CardMedia
+                    component="img"
+                    src={photoUrl}
+                    width={50}
+                    height={150}
+                >
+                </CardMedia>
+            }
             <CardContent>
                 <Typography variant="h4">
                     {title}
@@ -23,9 +33,7 @@ export default function BookCard({
                     value={rating}
                 />
             </CardContent>
-            <CardActions>
-                <Button size="small">Czytaj Więcej</Button>
-            </CardActions>
+
         </Card>
     )
 }

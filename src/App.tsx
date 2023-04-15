@@ -1,11 +1,12 @@
 import { AppBar, Container, Toolbar, Typography } from "@mui/material";
+import { ConfigContext } from "./ConfigContext";
 import CreateBookButton from "./library/create-book/CreateBookButton";
 
 
 export default function App({ children }: { children: React.ReactNode }) {
     return (
-        <>
-            <AppBar position="fixed">
+        <ConfigContext>
+            <AppBar>
                 <Toolbar>
                     <Typography variant="h6" color="inherit" component="div" flexGrow={1}>
                         Library
@@ -14,9 +15,9 @@ export default function App({ children }: { children: React.ReactNode }) {
                     <CreateBookButton />
                 </Toolbar>
             </AppBar>
-            <Container>
+            <Container style={{ marginTop: '70px' }}>
                 {children}
             </Container>
-        </>
+        </ConfigContext>
     )
 }

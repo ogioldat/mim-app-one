@@ -32,14 +32,25 @@ export default function CreateBookDialog({
     formData,
     handleChange
 }: ICreateBookDialogProps) {
+    const isPhotoUrlInvalid = (url: string | null): boolean => {
+        if (url === '') {
+            return false
+        }
+
+        if (isValidHttpUrl(url)) {
+            return false
+        }
+
+        return true
+    }
+
     const isFormInvalid = formData.title?.length < 1
         || formData.author?.length < 1
         || formData.description?.length < 1
         || parseInt(formData.yearMark) > (new Date).getFullYear()
         || parseInt(formData.yearMark) < 1
         || formData.yearMark === ''
-        || isValidHttpUrl(formData.photoUrl)
-        || formData.photoUrl !== ''
+        || isPhotoUrlInvalid(formData.photoUrl)
 
     return (
         <Dialog open={isOpen}>

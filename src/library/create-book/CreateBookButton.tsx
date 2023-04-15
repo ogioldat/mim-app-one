@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import CreateBookDialog from "./CreateBookDialog";
 import AddIcon from '@mui/icons-material/Add';
 import { IBook } from "../../types/IBook";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
+import { addDoc, collection, doc, getFirestore, setDoc } from "firebase/firestore";
 import { FirebaseContext } from "../../firebase/FirebaseContext";
 
 export type FormData = Omit<IBook, 'id'>
@@ -24,7 +24,15 @@ export default function CreateBookButton() {
 
     function handleChange(e: any) {
         const { id, value } = e.target;
-        console.log(id, value)
+
+        if (id === undefined) {
+            setFormData((prevState: FormData) => ({
+                ...prevState,
+                rating: value
+            }));
+            return
+        }
+
         setFormData((prevState: FormData) => ({
             ...prevState,
             [id]: value
@@ -36,7 +44,8 @@ export default function CreateBookButton() {
             ...formData,
             photoUrl: formData.photoUrl || null
         }
-        setDoc(doc(db, 'library'), formData).finally(() => { setIsOpen(false) })
+
+        addDoc(collection(db, 'library'), dbPayload).finally(() => { setIsOpen(false) })
     }
 
     return (
