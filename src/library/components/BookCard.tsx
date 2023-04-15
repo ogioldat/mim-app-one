@@ -10,18 +10,17 @@ export default function BookCard({
     photoUrl
 }: IBook) {
     const { a11yMode } = useToggleStateContext()
+    const defaultBookPhotoUrl = 'https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg'
 
     return (
         <Card>
-            {
-                photoUrl !== null && <CardMedia
-                    component="img"
-                    src={photoUrl}
-                    width={50}
-                    height={150}
-                >
-                </CardMedia>
-            }
+            <CardMedia
+                component="img"
+                src={photoUrl ?? defaultBookPhotoUrl}
+                width={50}
+                height={150}
+            />
+
             <CardContent>
                 <Typography variant={a11yMode ? 'h4' : 'h5'}>
                     {title}
