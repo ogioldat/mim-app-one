@@ -8,7 +8,6 @@ export default function BookCard({
     rating,
     photoUrl
 }: IBook) {
-    console.log(photoUrl)
     return (
         <Card>
             {

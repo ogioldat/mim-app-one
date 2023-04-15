@@ -1,11 +1,13 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from 'firebase/auth';
-import { addDoc, collection, doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
+import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore';
 import { useContext, useEffect, useState } from 'react';
 import { IUser } from '../types/IUser';
 import app from './app';
 import { FirebaseContext } from './FirebaseContext';
 
-export function useGoogleAuth(): IUser | null {
+type AuthCallback = () => void
+
+export function useGoogleAuth(): [IUser | null, AuthCallback] {
     const [user, setUser] = useState<IUser | null>(null)
 
     const firebase = useContext(FirebaseContext)
@@ -35,14 +37,12 @@ export function useGoogleAuth(): IUser | null {
                     lastLogin: new Date(),
                     displayName: user.displayName
                 }
-                await addDoc(collection(db, 'users'), userObj)
+                await setDoc(userRef, userObj)
                 setUser(userObj)
 
-            } else {
-                signInWithPopup(auth, provider)
             }
         });
     }, [])
 
-    return user
+    return [user, () => signInWithPopup(auth, provider)]
 }
