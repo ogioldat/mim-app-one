@@ -36,8 +36,8 @@ export default function Library() {
         {
             books.map(book => {
                 return (
-                    <Grid item xs={12}>
-                        <BookCard key={book.id} {...book} />
+                    <Grid item xs={12} key={book.id} >
+                        <BookCard {...book} />
                     </Grid>
                 )
             })
