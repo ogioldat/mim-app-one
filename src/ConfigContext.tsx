@@ -42,5 +42,5 @@ export const ConfigContext = ({ children }: { children: ReactNode }) => {
     )
 }
 
-export const useToggleDispatchContext = () => useContext(ToggleStateContext)
-export const useToggleStateContext = () => useContext(ToggleDispatchContext)
+export const useToggleDispatchContext = () => useContext(ToggleDispatchContext)
+export const useToggleStateContext = () => useContext(ToggleStateContext)

@@ -5,10 +5,13 @@ import AddIcon from '@mui/icons-material/Add';
 import { IBook } from "../../types/IBook";
 import { addDoc, collection, doc, getFirestore, setDoc } from "firebase/firestore";
 import { FirebaseContext } from "../../firebase/FirebaseContext";
+import { useToggleStateContext } from "../../ConfigContext";
 
 export type FormData = Omit<IBook, 'id'>
 
 export default function CreateBookButton() {
+    const { a11yMode } = useToggleStateContext()
+
     const firebase = useContext(FirebaseContext)
     const db = getFirestore(firebase)
 
@@ -50,8 +53,11 @@ export default function CreateBookButton() {
 
     return (
         <React.Fragment>
-            <IconButton onClick={() => setIsOpen(true)} color="inherit" aria-label="create book">
-                <AddIcon />
+            <IconButton
+                onClick={() => setIsOpen(true)}
+                color="inherit"
+                aria-label="create book">
+                <AddIcon fontSize={a11yMode ? 'large' : 'small'} />
             </IconButton>
 
             <CreateBookDialog
