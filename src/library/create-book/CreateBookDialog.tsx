@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, MenuItem, Rating, TextField, Typography } from "@mui/material"
-import { MouseEventHandler, useState } from "react"
+import { useToggleStateContext } from "../../ConfigContext"
 import { IBook } from "../../types/IBook"
 
 export type FormData = Omit<IBook, 'id'>
@@ -32,6 +32,8 @@ export default function CreateBookDialog({
     formData,
     handleChange
 }: ICreateBookDialogProps) {
+    const { a11yMode } = useToggleStateContext()
+
     const isPhotoUrlInvalid = (url: string | null): boolean => {
         if (url === '') {
             return false
@@ -52,20 +54,32 @@ export default function CreateBookDialog({
         || formData.yearMark === ''
         || isPhotoUrlInvalid(formData.photoUrl)
 
+
+    const textFieldSize = a11yMode ? undefined : 'small'
+
     return (
         <Dialog open={isOpen}>
-            <DialogTitle>Dodaj nową ksiąkę</DialogTitle>
+            <DialogTitle>
+                <Typography variant={a11yMode ? 'h4' : 'h5'} color="inherit" component="div" flexGrow={1}>
+                    Dodaj nową książkę
+                </Typography>
+            </DialogTitle>
             <DialogContent>
                 <DialogContentText>
-                    Po zapisaniu, nowo dodana ksiąka od razu
-                    pokaze się w bibliotece.
+                    <Typography variant={a11yMode ? 'h6' : 'body1'} color="inherit" component="div" flexGrow={1}>
+                        Po zapisaniu, nowo dodana ksiąka od razu
+                        pokaze się w bibliotece.
+                    </Typography>
+
                 </DialogContentText>
 
                 <TextField
                     autoFocus
+                    fullWidth
                     helperText="Podaj nazwę książki"
                     label="Tytuł"
                     margin="dense"
+                    size={textFieldSize}
                     error={formData.title?.length < 1}
                     value={formData.title}
                     onChange={handleChange}
@@ -74,8 +88,10 @@ export default function CreateBookDialog({
                 <TextField
                     autoFocus
                     margin="dense"
+                    fullWidth
                     helperText="Podaj autora książki"
                     label="Autor"
+                    size={textFieldSize}
                     error={formData.author?.length < 1}
                     value={formData.author}
                     onChange={handleChange}
@@ -83,9 +99,11 @@ export default function CreateBookDialog({
                 />
                 <TextField
                     autoFocus
+                    fullWidth
                     margin="dense"
                     helperText="Podaj opis"
                     label="Opis"
+                    size={textFieldSize}
                     error={formData.description?.length < 1}
                     value={formData.description}
                     onChange={handleChange}
@@ -94,6 +112,8 @@ export default function CreateBookDialog({
                 <TextField
                     autoFocus
                     margin="dense"
+                    fullWidth
+                    size={textFieldSize}
                     helperText="Podaj rok wydania"
                     label="Rok wydania"
                     error={parseInt(formData.yearMark) > (new Date).getFullYear()
@@ -108,6 +128,8 @@ export default function CreateBookDialog({
                 <TextField
                     autoFocus
                     margin="dense"
+                    fullWidth
+                    size={textFieldSize}
                     helperText="Opcjonalnie podaj link do zdjęcia"
                     label="Link do zdjęcia"
                     error={!isValidHttpUrl(formData.photoUrl) && formData.photoUrl !== ''}
@@ -119,6 +141,8 @@ export default function CreateBookDialog({
                 <TextField
                     autoFocus
                     margin="dense"
+                    fullWidth
+                    size={textFieldSize}
                     helperText="Oceń ksiązke"
                     label="Ocena"
                     select
@@ -134,8 +158,8 @@ export default function CreateBookDialog({
                 </TextField>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose}>Anuluj</Button>
-                <Button disabled={isFormInvalid} onClick={handleSubmit}>Dodaj</Button>
+                <Button size={a11yMode ? 'large' : 'medium'} onClick={handleClose}>Anuluj</Button>
+                <Button size={a11yMode ? 'large' : 'medium'} variant="contained" disabled={isFormInvalid} onClick={handleSubmit}>Dodaj</Button>
             </DialogActions>
         </Dialog>
     )
